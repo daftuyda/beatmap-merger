@@ -19,14 +19,28 @@ A simple Python script to merge multiple osu! beatmaps and their audio tracks in
 Install dependencies:
 
 ```bash
-pip install pydub
+pip install pydub PyQt6
 # Ensure ffmpeg is available in your PATH
 ```
 
-## Usage
+## GUI Usage
+
+Launch the graphical interface — no file renaming required:
 
 ```bash
-python osu_beatmap_merger.py <input_dir> [options]
+python beatmap_merger_gui.py
+```
+
+1. Click **Add .osu Files** and select your beatmaps (any filename works).
+2. Audio files are auto-detected from each map's `AudioFilename` field.
+3. Reorder maps with **Move Up** / **Move Down**.
+4. Adjust HP, CS, OD, AR in the Difficulty Settings panel.
+5. Set output paths and click **Merge!**
+
+## CLI Usage
+
+```bash
+python beatmap_merger.py <input_dir> [options]
 ```
 
 * `<input_dir>`: Directory containing paired, numbered beatmaps and audio files.
@@ -45,7 +59,7 @@ python osu_beatmap_merger.py <input_dir> [options]
 ### Example
 
 ```bash
-python osu_beatmap_merger.py ./maps \
+python beatmap_merger.py ./maps \
   --output-osu compilation.osu \
   --output-audio compilation.mp3 \
   --hp 6.5 --od 9.0 --cs 4.0 --ar 9.5
